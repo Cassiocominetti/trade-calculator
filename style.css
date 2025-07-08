@@ -1,12 +1,12 @@
 :root {
-  --bg: #f4f4f7;
-  --text: #1c1c1c;
-  --card: #ffffff;
-  --accent: #c79200;
-  --button-hover: #a37400;
-  --disclaimer-bg: #fff3c4;
-  --disclaimer-text: #4a3b00;
-  --border: #c79200;
+  --bg: #e5dfd6;
+  --text: #f5f5f5;
+  --card: #444444;
+  --accent: #e9e4d9;
+  --button-hover: #5a5656;
+  --disclaimer-bg: #333232;
+  --disclaimer-text: #e9e4d9;
+  --border: #e9e4d9;
 }
 
 body.dark {
@@ -14,7 +14,7 @@ body.dark {
   --text: #f5f5f5;
   --card: #1a1a1a;
   --accent: #f5c443;
-  --button-hover: #e5b633;
+  --button-hover: #b3881b;
   --disclaimer-bg: #1f1f1f;
   --disclaimer-text: #ffcc00;
   --border: #f5c443;
@@ -52,17 +52,84 @@ h1 {
   letter-spacing: 1px;
 }
 
-button#toggle-theme {
-  font-size: 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--accent);
-  transition: color 0.3s ease;
+.theme-toggle {
+  position: relative;
+  width: 60px;
+  height: 30px;
 }
 
-button#toggle-theme:hover {
-  color: var(--button-hover);
+.theme-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-toggle label {
+  display: block;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  background-color: #2e2e2e;
+  border-radius: 30px;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.theme-toggle .toggle-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: #4b4a4a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.3s, background 0.3s;
+}
+
+.theme-toggle .moon {
+  left: 3px;
+}
+
+.theme-toggle .sun {
+  right: 3px;
+  opacity: 0;
+}
+
+.theme-toggle input:checked + label .moon {
+  opacity: 0;
+}
+
+.theme-toggle input:checked + label .sun {
+  opacity: 1;
+}
+
+.theme-toggle input:checked + label {
+  background-color: #2e2e2e;
+}
+
+.theme-toggle input + label .moon,
+.theme-toggle input:checked + label .sun {
+  left: calc(100% - 29px);
+}
+
+.theme-toggle input:not(:checked) + label .moon {
+  left: 3px;
+}
+
+.theme-toggle input:not(:checked) + label .sun {
+  opacity: 0;
+}
+
+.theme-toggle input:checked + label .moon {
+  opacity: 0;
+}
+
+.theme-toggle input:checked + label .sun {
+  opacity: 1;
 }
 
 form {
@@ -147,13 +214,28 @@ button:hover {
 }
 
 .tab-btn:hover {
-  background-color: #d0d0d0;
+  background-color: #b8b8b8;
   color: #111;
 }
 
 .tab-btn.active {
+  background-color: #5a5656;
+  color: #fcfafa;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark .tab-btn.active {
   background-color: var(--accent);
   color: #1c1c1c;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tab-btn.active:hover {
+  background-color: #a39f9f;
+}
+
+body.dark .tab-btn.active:hover {
+  background-color: #eeb524; /* exemplo: tom mais escuro ou diferente para dark */
 }
 
 .tab-content {
@@ -218,4 +300,62 @@ ul#history-list li {
   h1 {
     font-size: 16px;
   }
+}
+
+.download-btn {
+  background-color: var(--accent);
+  color: #1c1c1c;
+  font-weight: bold;
+  padding: 12px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.download-btn:hover {
+  background-color: var(--button-hover);
+  color: #fff;
+}
+
+.app-version-inline {
+  text-align: right;
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 0.5;
+  color: var(--text);
+}
+
+.document-links {
+  margin-top: 20px;
+  margin-left: 10px;
+  padding: 0 10px;
+}
+
+.document-links ul {
+  list-style: disc;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.document-links li a {
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.document-links li a:hover {
+  color: #a8a4a4;
+}
+
+body.dark .document-links li a:hover {
+  color: var(--button-hover);
 }

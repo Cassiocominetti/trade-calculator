@@ -27,6 +27,15 @@ document.querySelectorAll(".tab-btn").forEach((btn) => {
   });
 });
 
+document.querySelectorAll(".numeric-only").forEach((input) => {
+  input.addEventListener("input", function () {
+    this.value = this.value.replace(/[^0-9.]/g, "");
+    if ((this.value.match(/\./g) || []).length > 1) {
+      this.value = this.value.substring(0, this.value.length - 1);
+    }
+  });
+});
+
 document.getElementById("calc-form").addEventListener("submit", function (e) {
   e.preventDefault();
 

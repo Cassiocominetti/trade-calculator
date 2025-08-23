@@ -37,37 +37,13 @@
       <div class="tab-content active" id="calculadora">
         <form id="calc-form">
           <label for="loss">Perda máxima ($)</label>
-          <select id="loss">
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-            <option value="40">40</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-            <option value="200">200</option>
-            <option value="300">300</option>
-            <option value="400">400</option>
-            <option value="500" selected>500</option>
-          </select>
+          <input id="loss" class="numeric-only" placeholder="0.00" required />
 
           <label for="stop">Stop loss (%)</label>
-          <input
-            id="stop"
-            placeholder="0.00"
-            type="number"
-            step="0.01"
-            required
-          />
+          <input id="stop" class="numeric-only" placeholder="0.00" required />
 
           <label for="leverage">Alavancagem (X)</label>
-          <input
-            id="leverage"
-            placeholder="0"
-            type="number"
-            step="1"
-            required
-          />
+          <input id="leverage" class="numeric-only" placeholder="0" required />
 
           <label for="target">Alvo (risco:retorno)</label>
           <select id="target">

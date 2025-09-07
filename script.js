@@ -42,17 +42,66 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
   const stop = parseFloat(document.getElementById("stop").value);
   const lev = parseFloat(document.getElementById("leverage").value);
   const loss = parseFloat(document.getElementById("loss").value);
+  const entry = parseFloat(document.getElementById("entry").value);
   const targetRatio = parseFloat(document.getElementById("target").value);
+  const direction = document.getElementById("direction").value;
 
   if (stop <= 0 || lev <= 0 || loss <= 0 || targetRatio <= 0) {
     return alert("Valores inválidos");
   }
 
+  // cálculos principais
   const pos = loss / (stop / 100);
   const marg = pos / lev;
   const target = loss * targetRatio;
 
+  let sl = null;
+  let tp = null;
+
+  if (!isNaN(entry) && entry > 0) {
+    const stopValue = entry * (stop / 100);
+
+    if (direction === "long") {
+      sl = entry - stopValue;
+      tp = entry + (entry - sl) * targetRatio;
+    } else {
+      sl = entry + stopValue;
+      tp = entry - (sl - entry) * targetRatio;
+    }
+  }
+
+  function formatNumber(num) {
+    if (num == null || isNaN(num)) return "-";
+
+    // Se for inteiro, retorna direto
+    if (Number.isInteger(num)) return num.toString();
+
+    // Limita a 8 casas para evitar cauda gigante do JS
+    let str = num.toFixed(8);
+
+    // Remove zeros finais só se NÃO houver dígito significativo depois do zero
+    str = str.replace(/(\.\d*?[1-9])0+$/, "$1");
+
+    // Garante que pelo menos 1 casa decimal fica se o número for tipo 100.90
+    if (/\.\d$/.test(str)) {
+      return str; // mantém como 100.90
+    }
+
+    // Remove ponto final se ficar sobrando
+    return str.replace(/\.$/, "");
+  }
+
+  // exibir resultados
   document.getElementById("loss-display").textContent = loss.toFixed(2);
+  document.getElementById("entry-display").textContent = entry
+    ? formatNumber(entry)
+    : "-";
+  document.getElementById("sl-display").textContent = sl
+    ? formatNumber(sl)
+    : "-";
+  document.getElementById("tp-display").textContent = tp
+    ? formatNumber(tp)
+    : "-";
   document.getElementById("position-size").textContent = `$${pos.toFixed(2)}`;
   document.getElementById("margin-required").textContent = `$${marg.toFixed(
     2
@@ -64,6 +113,10 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
     perdaMaxima: loss,
     stop,
     alavancagem: lev,
+    direcao: direction,
+    entrada: entry || null,
+    stopLoss: sl,
+    takeProfit: tp,
     tamanhoPosicao: pos,
     margem: marg,
     alvo: target,
@@ -102,6 +155,14 @@ function atualizarLista(hist) {
       }</strong> - Perda máxima: <strong>$${item.perdaMaxima.toFixed(
       2
     )}</strong><br>
+      Direção: <strong>${item.direcao}</strong><br>
+      Entrada: <strong>$${
+        item.entrada ? item.entrada.toFixed(5) : "-"
+      }</strong> |
+      SL: <strong>${item.stopLoss ? item.stopLoss.toFixed(5) : "-"}</strong> |
+      TP: <strong>${
+        item.takeProfit ? item.takeProfit.toFixed(5) : "-"
+      }</strong><br>
       Stop loss: <strong>${item.stop}%</strong>, 
       Alavancagem: <strong>${item.alavancagem}x</strong><br>
       📊 Tamanho da posição: <strong>$${item.tamanhoPosicao.toFixed(

@@ -50,7 +50,6 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
     return alert("Valores inválidos");
   }
 
-  // cálculos principais
   const pos = loss / (stop / 100);
   const marg = pos / lev;
   const target = loss * targetRatio;
@@ -73,25 +72,19 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
   function formatNumber(num) {
     if (num == null || isNaN(num)) return "-";
 
-    // Se for inteiro, retorna direto
     if (Number.isInteger(num)) return num.toString();
 
-    // Limita a 8 casas para evitar cauda gigante do JS
     let str = num.toFixed(8);
 
-    // Remove zeros finais só se NÃO houver dígito significativo depois do zero
     str = str.replace(/(\.\d*?[1-9])0+$/, "$1");
 
-    // Garante que pelo menos 1 casa decimal fica se o número for tipo 100.90
     if (/\.\d$/.test(str)) {
-      return str; // mantém como 100.90
+      return str;
     }
 
-    // Remove ponto final se ficar sobrando
     return str.replace(/\.$/, "");
   }
 
-  // exibir resultados
   document.getElementById("loss-display").textContent = loss.toFixed(2);
   document.getElementById("entry-display").textContent = entry
     ? formatNumber(entry)
@@ -104,7 +97,7 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
     : "-";
   document.getElementById("position-size").textContent = `$${pos.toFixed(2)}`;
   document.getElementById("margin-required").textContent = `$${marg.toFixed(
-    2
+    2,
   )}`;
   document.getElementById("target-value").textContent = `$${target.toFixed(2)}`;
   document.getElementById("results").style.display = "block";
@@ -153,20 +146,20 @@ function atualizarLista(hist) {
       <strong>#${
         i + 1
       }</strong> - Perda máxima: <strong>$${item.perdaMaxima.toFixed(
-      2
-    )}</strong><br>
+        2,
+      )}</strong><br>
       Direção: <strong>${item.direcao}</strong><br>
       Entrada: <strong>$${
-        item.entrada ? item.entrada.toFixed(5) : "-"
+        item.entrada ? item.entrada.toFixed(2) : "-"
       }</strong> |
-      SL: <strong>${item.stopLoss ? item.stopLoss.toFixed(5) : "-"}</strong> |
+      SL: <strong>${item.stopLoss ? item.stopLoss.toFixed(2) : "-"}</strong> |
       TP: <strong>${
-        item.takeProfit ? item.takeProfit.toFixed(5) : "-"
+        item.takeProfit ? item.takeProfit.toFixed(2) : "-"
       }</strong><br>
       Stop loss: <strong>${item.stop}%</strong>, 
       Alavancagem: <strong>${item.alavancagem}x</strong><br>
       📊 Tamanho da posição: <strong>$${item.tamanhoPosicao.toFixed(
-        2
+        2,
       )}</strong> |
       Margem: <strong>$${item.margem.toFixed(2)}</strong> |
       Alvo: <strong>$${item.alvo?.toFixed(2) || "0.00"}</strong>

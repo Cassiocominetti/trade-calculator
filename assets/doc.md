@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-Esta aplicação web auxilia traders de criptomoedas a calcular posições, margens e metas de lucro com base na perda máxima desejada, stop loss, alavancagem, relação risco:retorno e, opcionalmente, o preço de entrada.
+Esta aplicação web auxilia traders a calcular posições, margens e metas de lucro com base na perda máxima desejada, stop loss, alavancagem, relação risco:retorno e, opcionalmente, o preço de entrada.
 
 ---
 
@@ -51,6 +51,13 @@ Na aba **Histórico**, utilize o botão **Exportar Excel** para baixar um arquiv
 Na aba **Documentação**, é possível baixar uma planilha de referência formatada, ideal para quem prefere trabalhar diretamente no Excel.  
 Essa planilha já vem com as fórmulas pré-configuradas, facilitando o cálculo manual.  
 Para utilizá-la, basta preencher os campos com os seus dados e, caso deseje adicionar novas linhas, é necessário arrastar as fórmulas para baixo para que sejam aplicadas corretamente.
+
+---
+
+## Alternância de Idioma (PT/EN)
+
+No cabeçalho, há um toggle para alternar entre português e inglês.  
+O sistema lembra sua escolha para futuras visitas.
 
 ---
 

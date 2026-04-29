@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./style.css" />
+
+    <title>Documentation - Trade Calculator Live Off Crypto</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown-light.min.css"
+      rel="stylesheet"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown-dark.min.css"
+      rel="stylesheet"
+      media="(prefers-color-scheme: dark)"
+    />
+  </head>
+
+  <body>
+    <article class="markdown-body" id="content" aria-live="polite">
+      Loading documentation...
+    </article>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+      (function () {
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        const savedTheme = localStorage.getItem("theme");
+        const darkMode = savedTheme === "dark" || (!savedTheme && prefersDark);
+        if (darkMode) document.body.classList.add("dark");
+      })();
+
+      fetch("doc.en.md")
+        .then((res) => {
+          if (!res.ok) throw new Error("Error loading documentation file.");
+          return res.text();
+        })
+        .then((md) => {
+          document.getElementById("content").innerHTML = marked.parse(md);
+        })
+        .catch((err) => {
+          document.getElementById("content").textContent = err.message;
+        });
+    </script>
+  </body>
+</html>

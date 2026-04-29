@@ -38,11 +38,13 @@ It is actively used by traders from the "Viver de Cripto" community and demonstr
 ![CSS3](https://img.shields.io/badge/CSS3-05122A?style=flat&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-05122A?style=flat&logo=javascript&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-05122A?style=flat&logo=vercel&logoColor=white)
+![Claude](https://img.shields.io/badge/Claude_Sonnet-05122A?style=flat&logo=anthropic&logoColor=white)
 
 - **HTML5, CSS3, JavaScript (ES6+)**
 - **SheetJS (xlsx.js)** — spreadsheet export
 - **LocalStorage** — data persistence and preferences
 - **Vercel** — continuous deployment
+- **Claude Sonnet** — AI-assisted development & English version
 
 ---
 
@@ -67,11 +69,15 @@ It is actively used by traders from the "Viver de Cripto" community and demonstr
  ┣ 📄 README.en.md
  ┣ 📄 README.md
  ┗ 📂 assets
+    ┣ 📄 calculadora_de_trade_viver_de_cripto.xlsx
+    ┣ 📄 doc.en.html
     ┣ 📄 doc.html
-    ┣ 📄 doc.xlsx
+    ┣ 📄 doc.md
     ┣ 🖼️ interface.png
     ┣ 🌙 moon.svg
+    ┣ 📄 style.css
     ┣ ☀️ sun.svg
+    ┣ 📄 trade_calculator_en.xlsx
     ┣ 🖼️ trade_icon.png
     ┗ 🗑️ trash.svg
 ```
@@ -97,4 +103,4 @@ Developed by **Cassiano Cominetti**
 
 ## 🖥️ Interface
 
-<img src="./assets/interface.png" width="400" />
+<img src="./assets/interface.en.png" width="400" />

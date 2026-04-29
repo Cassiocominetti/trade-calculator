@@ -12,49 +12,74 @@
   <body>
     <div class="container">
       <div class="header">
-        <h1>CALCULADORA DE TRADE<br />++ VIVER DE CRIPTO ++</h1>
-        <div class="theme-toggle">
-          <input type="checkbox" id="toggle-theme" />
-          <label for="toggle-theme">
-            <span class="toggle-icon moon"
-              ><img src="./assets/moon.svg" alt="Moon"
-            /></span>
-            <span class="toggle-icon sun"
-              ><img src="./assets/sun.svg" alt="Sun"
-            /></span>
-          </label>
+        <h1 data-i18n="title">
+          CALCULADORA DE TRADE<br />++ VIVER DE CRIPTO ++
+        </h1>
+        <div class="header-controls">
+          <div class="lang-toggle">
+            <button id="lang-pt" class="lang-btn active">PT</button>
+            <span class="lang-sep">|</span>
+            <button id="lang-en" class="lang-btn">EN</button>
+          </div>
+          <div class="theme-toggle">
+            <input type="checkbox" id="toggle-theme" />
+            <label for="toggle-theme">
+              <span class="toggle-icon moon"
+                ><img src="./assets/moon.svg" alt="Moon"
+              /></span>
+              <span class="toggle-icon sun"
+                ><img src="./assets/sun.svg" alt="Sun"
+              /></span>
+            </label>
+          </div>
         </div>
       </div>
 
       <div class="tabs">
-        <button class="tab-btn active" data-tab="calculadora">
+        <button
+          class="tab-btn active"
+          data-tab="calculadora"
+          data-i18n="tab_calc"
+        >
           Calculadora
         </button>
-        <button class="tab-btn" data-tab="historico">Histórico</button>
-        <button class="tab-btn" data-tab="documentacao">Documentação</button>
+        <button class="tab-btn" data-tab="historico" data-i18n="tab_hist">
+          Histórico
+        </button>
+        <button class="tab-btn" data-tab="documentacao" data-i18n="tab_doc">
+          Documentação
+        </button>
       </div>
 
       <div class="tab-content active" id="calculadora">
         <form id="calc-form">
-          <label for="loss">Perda máxima ($)</label>
+          <label for="loss" data-i18n="label_loss">Perda máxima ($)</label>
           <input id="loss" class="numeric-only" placeholder="0.00" required />
 
-          <label for="entry">Preço de entrada ($) (opcional)</label>
+          <label for="entry" data-i18n="label_entry"
+            >Preço de entrada ($) (opcional)</label
+          >
           <input id="entry" class="numeric-only" placeholder="0.00" />
 
-          <label for="direction">Direção da operação</label>
+          <label for="direction" data-i18n="label_direction"
+            >Direção da operação</label
+          >
           <select id="direction">
             <option value="long" selected>Long</option>
             <option value="short">Short</option>
           </select>
 
-          <label for="stop">Stop loss (%)</label>
+          <label for="stop" data-i18n="label_stop">Stop loss (%)</label>
           <input id="stop" class="numeric-only" placeholder="0.00" required />
 
-          <label for="leverage">Alavancagem (X)</label>
+          <label for="leverage" data-i18n="label_leverage"
+            >Alavancagem (X)</label
+          >
           <input id="leverage" class="numeric-only" placeholder="0" required />
 
-          <label for="target">Alvo (risco:retorno)</label>
+          <label for="target" data-i18n="label_target"
+            >Alvo (risco:retorno)</label
+          >
           <select id="target">
             <option value="1">1:1</option>
             <option value="2">1:2</option>
@@ -68,39 +93,62 @@
             <option value="10">1:10</option>
           </select>
 
-          <button type="submit">Calcular</button>
+          <button type="submit" data-i18n="btn_calc">Calcular</button>
         </form>
 
         <div class="results" id="results" style="display: none">
-          <p><strong>Perda máxima:</strong> $<span id="loss-display"></span></p>
-          <p><strong>Entrada:</strong> $<span id="entry-display"></span></p>
-          <p><strong>Stop-Loss:</strong> $<span id="sl-display"></span></p>
-          <p><strong>Take-Profit:</strong> $<span id="tp-display"></span></p>
           <p>
-            <strong>Tamanho da posição:</strong>
+            <strong data-i18n="res_loss">Perda máxima:</strong> $<span
+              id="loss-display"
+            ></span>
+          </p>
+          <p>
+            <strong data-i18n="res_entry">Entrada:</strong> $<span
+              id="entry-display"
+            ></span>
+          </p>
+          <p>
+            <strong data-i18n="res_sl">Stop-Loss:</strong> $<span
+              id="sl-display"
+            ></span>
+          </p>
+          <p>
+            <strong data-i18n="res_tp">Take-Profit:</strong> $<span
+              id="tp-display"
+            ></span>
+          </p>
+          <p>
+            <strong data-i18n="res_pos">Tamanho da posição:</strong>
             <span id="position-size"></span>
           </p>
           <p>
-            <strong>Margem utilizada:</strong>
+            <strong data-i18n="res_margin">Margem utilizada:</strong>
             <span id="margin-required"></span>
           </p>
-          <p><strong>Valor alvo:</strong> <span id="target-value"></span></p>
+          <p>
+            <strong data-i18n="res_target">Valor alvo:</strong>
+            <span id="target-value"></span>
+          </p>
         </div>
 
         <div class="disclaimer">
-          ⚠️ <strong>Aviso Legal:</strong> Os cálculos apresentados são apenas
-          <strong>estimativas</strong> e não constituem recomendação de
-          investimento. Considere sempre o
-          <strong>preço de liquidação</strong> e as
-          <strong>taxas da corretora</strong>.
+          ⚠️ <strong data-i18n="disclaimer_title">Aviso Legal:</strong>
+          <span data-i18n="disclaimer_body"
+            >Os cálculos apresentados são apenas <strong>estimativas</strong> e
+            não constituem recomendação de investimento. Considere sempre o
+            <strong>preço de liquidação</strong> e as
+            <strong>taxas da corretora</strong>.</span
+          >
         </div>
       </div>
 
       <div class="tab-content" id="historico">
         <ul id="history-list"></ul>
         <div class="buttons">
-          <button id="clear-history">Apagar histórico</button>
-          <button id="export-xlsx">Exportar</button>
+          <button id="clear-history" data-i18n="btn_clear">
+            Apagar histórico
+          </button>
+          <button id="export-xlsx" data-i18n="btn_export">Exportar</button>
         </div>
       </div>
 
@@ -109,23 +157,26 @@
           <ul>
             <li>
               <a
+                id="link-xlsx"
                 href="./assets/calculadora_de_trade_viver_de_cripto.xlsx"
                 download
+                data-i18n="doc_download"
                 >Baixar planilha</a
               >
             </li>
             <li>
-              <a href="./assets/doc.html" target="_blank">Ler documentação</a>
-            </li>
-            <li>
-              <a href="https://youtu.be/D4JWbSsKvrU" target="_blank"
-                >Vídeo tutorial</a
+              <a
+                id="link-doc"
+                href="./assets/doc.html"
+                target="_blank"
+                data-i18n="doc_read"
+                >Ler documentação</a
               >
             </li>
           </ul>
         </div>
       </div>
-      <div class="app-version-inline">V 1.3</div>
+      <div class="app-version-inline">V 1.4</div>
     </div>
 
     <script src="script.js"></script>

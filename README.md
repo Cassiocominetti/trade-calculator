@@ -38,11 +38,13 @@ Utilizada por traders da comunidade "Viver de Cripto", o projeto também demonst
 ![CSS3](https://img.shields.io/badge/CSS3-05122A?style=flat&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-05122A?style=flat&logo=javascript&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-05122A?style=flat&logo=vercel&logoColor=white)
+![Claude](https://img.shields.io/badge/Claude_Sonnet-05122A?style=flat&logo=anthropic&logoColor=white)
 
 - **HTML5, CSS3 e JavaScript (ES6+)** — sem frameworks
 - **SheetJS (xlsx.js)** — exportação de histórico em planilha Excel
 - **LocalStorage** — persistência do histórico e preferência de tema
 - **Vercel** — deploy contínuo em produção
+- **Claude Sonnet** — desenvolvimento assistido por IA & versão em inglês
 
 ---
 
@@ -67,11 +69,15 @@ Utilizada por traders da comunidade "Viver de Cripto", o projeto também demonst
  ┣ 📄 README.en.md
  ┣ 📄 README.md
  ┗ 📂 assets
+    ┣ 📄 calculadora_de_trade_viver_de_cripto.xlsx
+    ┣ 📄 doc.en.html
     ┣ 📄 doc.html
-    ┣ 📄 doc.xlsx
+    ┣ 📄 doc.md
     ┣ 🖼️ interface.png
     ┣ 🌙 moon.svg
+    ┣ 📄 style.css
     ┣ ☀️ sun.svg
+    ┣ 📄 trade_calculator_en.xlsx
     ┣ 🖼️ trade_icon.png
     ┗ 🗑️ trash.svg
 ```

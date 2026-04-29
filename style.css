@@ -24,7 +24,9 @@ body {
   font-family: "Segoe UI", sans-serif;
   background-color: var(--bg);
   color: var(--text);
-  transition: background 0.3s, color 0.3s;
+  transition:
+    background 0.3s,
+    color 0.3s;
   padding: 20px;
 }
 
@@ -40,7 +42,7 @@ body {
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: top;
 }
 
 h1 {
@@ -52,10 +54,66 @@ h1 {
   letter-spacing: 1px;
 }
 
+.header-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.lang-sep {
+  color: var(--accent);
+  opacity: 0.5;
+  font-size: 13px;
+  user-select: none;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--text);
+  opacity: 0.4;
+  padding: 2px 4px;
+  margin: 0;
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.lang-btn:hover {
+  opacity: 0.75;
+  background: none;
+  color: var(--text);
+}
+
+.lang-btn.active {
+  opacity: 1;
+  color: var(--accent);
+  background: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+body.dark .lang-btn.active {
+  color: var(--accent);
+}
+
 .theme-toggle {
   position: relative;
   width: 60px;
   height: 30px;
+  margin-top: -4px;
 }
 
 .theme-toggle input {
@@ -87,7 +145,9 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: left 0.3s, background 0.3s;
+  transition:
+    left 0.3s,
+    background 0.3s;
 }
 
 .theme-toggle .moon {
@@ -138,7 +198,7 @@ form {
 }
 
 label {
-  margin-top: 12px;
+  margin-top: 2px;
   font-weight: bold;
   color: var(--accent);
 }
@@ -171,7 +231,9 @@ button {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 button:hover {
@@ -210,7 +272,9 @@ button:hover {
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .tab-btn:hover {
@@ -221,13 +285,17 @@ button:hover {
 .tab-btn.active {
   background-color: #5a5656;
   color: #fcfafa;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 body.dark .tab-btn.active {
   background-color: var(--accent);
   color: #1c1c1c;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .tab-btn.active:hover {
@@ -235,7 +303,7 @@ body.dark .tab-btn.active {
 }
 
 body.dark .tab-btn.active:hover {
-  background-color: #eeb524; /* exemplo: tom mais escuro ou diferente para dark */
+  background-color: #eeb524;
 }
 
 .tab-content {
@@ -275,7 +343,9 @@ ul#history-list li {
   align-items: center;
   gap: 8px;
   margin-top: 12px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 #export-xlsx:hover,
@@ -297,8 +367,11 @@ ul#history-list li {
     padding: 20px;
   }
 
+  .theme-toggle {
+    margin-top: -12px;
+  }
   h1 {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .tabs {
@@ -307,6 +380,10 @@ ul#history-list li {
 
   .tab-btn {
     padding: 8px 8px;
+  }
+
+  .header-controls {
+    gap: 8px;
   }
 }
 
@@ -321,7 +398,9 @@ ul#history-list li {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .download-btn:hover {
